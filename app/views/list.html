@@ -1,0 +1,12 @@
+<div id="list_page">
+  <header class="header">
+    <h4>活动列表</h4>
+    <button class="btn btn-primary header-right"  ng-click='back_to_create()'>创建活动</button>
+
+  </header>
+    <div class="wrapper scrollable">
+        <ul class="list-style-2" >
+           <li ng-repeat="activity in activities track by $index" ng-click="go_to_action()">{{activity}}</li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div id="create-page">
+    <header class="header">
+        <h4>创 建 活 动</h4>
+        <button class="btn btn-primary header-left" ng-show="btn_show" ng-click='back_to_list()'>返回</button>
+
+    </header>
+
+    <div class="mainer">
+        <p>活动名称</p>
+        <input class="input-full"  ng-model="activity_name"  type="search" >
+        <p id="warner" ng-show="warnning">*活动名称重复</p>
+
+    </div>
+        <div id="buttoner">
+            <button class="btn btn-primary" ng-click="add_activity()" ng-disabled="!activity_name ">创建</button>
+        </div>
+
+
+</div>
