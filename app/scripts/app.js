@@ -32,6 +32,7 @@ angular
             templateUrl:'views/active.html',
             controller:'ActiveCtrl'
         })
+
       .otherwise({
         redirectTo: '/'
       });
