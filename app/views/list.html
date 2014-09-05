@@ -6,7 +6,7 @@
   </header>
     <div class="wrapper scrollable">
         <ul class="list-style-2" >
-           <li ng-repeat="activity in activities track by $index" ng-click="go_to_action()">{{activity}}</li>
+           <li ng-repeat="(name,status) in activities track by $index" ng-click="go_to_action()">{{name}}</li>
         </ul>
     </div>
 </div>
