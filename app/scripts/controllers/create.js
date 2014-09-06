@@ -31,14 +31,14 @@ angular.module('partyBid1App')
 
                     }
                 }
-                    if ($scope.warnning == false) {
-                activity.unshift({
-                    name: activity_name,
-                    status: 0
-                })
-                localStorage.setItem('activity', JSON.stringify(activity));
-                $location.path('/active');
-                    }
+                if ($scope.warnning == false) {
+                    activity.unshift({
+                        name: activity_name,
+                        status: 0
+                    })
+                    localStorage.setItem('activity', JSON.stringify(activity));
+                    $location.path('/active');
+                }
             }
         }
 

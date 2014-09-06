@@ -1,10 +1,15 @@
 <div class="active_page" xmlns="http://www.w3.org/1999/html">
     <header class="header">
         <h4>报名</h4>
-        <button class="btn btn-primary header-left" ng-click="go_to_list()">返回</button>
-        <button class="btn btn-primary header-right" ng-click="action()">{{start_end}}</button>
+        <button class="btn btn-primary header-left" ng-click="go_to_list()" >返回</button>
+        <button class="btn btn-primary header-right" ng-click="action()" ng-disabled="use">{{start_end}}</button>
     </header>
+    <!--<div class="wrapper scrollable">-->
+        <!--<ul class="list-style-2" >-->
+            <!--<li ng-repeat=" track by $index" ></li>-->
+        <!--</ul>-->
 
+    <!--</div>-->
     <footer>
         <!--&lt;!&ndash;-->
         <ul class="footer-nav footer-nav-2tabs">
