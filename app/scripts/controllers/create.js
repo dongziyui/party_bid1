@@ -21,18 +21,18 @@ angular.module('partyBid1App')
                 for (var i = 0, long = activity.length; i < long; i++) {
 
                     if (activity_name == activity[i].name) {
-                        console.log(activity[i].name)
+
                         $scope.warnning = true;
                         break;
 
                     }
                     else {
                         $scope.warnning = false
-                        console.log(111111111)
+
                     }
                 }
                     if ($scope.warnning == false) {
-                activity.unshift({
+                   activity.unshift({
                     name: activity_name,
                     satus: 0
                 })
