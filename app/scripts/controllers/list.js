@@ -8,7 +8,7 @@ angular.module('partyBid1App')
         {
             $location.path('/create')
         }
-       $scope.activities=JSON.parse(localStorage.getItem('$scope.activities'))
+       $scope.activities=JSON.parse(localStorage.getItem('activity'))
        if(!$scope.activities){
            $location.path('/create')
        }
