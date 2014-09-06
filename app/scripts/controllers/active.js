@@ -32,8 +32,11 @@ angular.module('partyBid1App')
             }
             else {
 
+                if( confirm("确定要结束本次报名吗？")){
+                    activity[j].status = 0
+                    $location.path("/")
+                }
 
-                activity[j].status = 0
 
 
             }

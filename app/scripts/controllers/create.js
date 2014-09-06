@@ -43,7 +43,7 @@ angular.module('partyBid1App')
         }
 
 
-        $scope.btn_show = localStorage.getItem('$scope.activities')
+        $scope.btn_show = localStorage.getItem("activity")
 
         $scope.back_to_list = function () {
             $location.path('/')
