@@ -13,9 +13,10 @@ angular.module('partyBid1App')
            $location.path('/create')
        }
 
-       $scope.go_to_action=function(activity_name){
-           console.log(activity_name)
-//           $location.path('/active')
+       $scope.go_to_action=function(action_name){
+           localStorage.setItem('action_name',action_name)
+
+           $location.path('/active')
        }
 
     })

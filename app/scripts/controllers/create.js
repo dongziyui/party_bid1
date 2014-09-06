@@ -12,7 +12,7 @@ angular.module('partyBid1App')
             if (!activity.length) {
                 activity.unshift({
                     name: activity_name,
-                    satus: 0
+                    status: 0
                 })
                 localStorage.setItem('activity', JSON.stringify(activity));
                 $location.path('/active');
@@ -32,9 +32,9 @@ angular.module('partyBid1App')
                     }
                 }
                     if ($scope.warnning == false) {
-                   activity.unshift({
+                activity.unshift({
                     name: activity_name,
-                    satus: 0
+                    status: 0
                 })
                 localStorage.setItem('activity', JSON.stringify(activity));
                 $location.path('/active');
