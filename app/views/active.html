@@ -4,14 +4,14 @@
         <button class="btn btn-primary header-left" ng-click="go_to_list()" >返回</button>
         <button class="btn btn-primary header-right" ng-click="action()" ng-disabled="use">{{start_end}}</button>
     </header>
-    <!--<div class="wrapper scrollable">-->
-        <!--<ul class="list-style-2" >-->
-            <!--<li ng-repeat=" track by $index" ></li>-->
-        <!--</ul>-->
+    <div class="wrapper scrollable">
+        <ul class="list-style-2" >
+            <li ng-repeat=" (name,phone) in join track by $index" >{{name}}:{{phone}}</li>
+        </ul>
 
-    <!--</div>-->
+    </div>
     <footer>
-        <!--&lt;!&ndash;-->
+        <!--<!---->
         <ul class="footer-nav footer-nav-2tabs">
             <li class="active"><a href="#"><br>报名</a></li>
             <li><a href="#"><br>竞价</a></li>
