@@ -15,22 +15,43 @@ var native_accessor = {
     process_received_message: function (json_message) {
         var activity = JSON.parse(localStorage.getItem("activity"))
         console.log(json_message)
-        for(var i=0;i<activity.length;i++){
-            if(activity[i].status==0){
-                console.log("活动尚未开始！")
-            }
-            else if(activity[i].status==1){
+        for (var i = 0; i < activity.length; i++) {
+            if (activity[i].status == 1) {
                 console.log("恭喜报名成功！")
+                break
             }
-            else{
+            else {
+                if (activity[i].status == 0) {
+                    var commit = true
+                }
+                else {
+                    commit = false
+                }
+            }
+            if (commit == true) {
+                console.log("活动尚未开始！")
+
+            }
+            else {
                 console.log("报名已结束！")
             }
-
         }
-//        if()
-        console.log(json_message)
-
     }
+
+//                (activity[i].status==0){
+//                console.log("活动尚未开始！")
+//            }
+//            else
+//            }
+//            else{
+//                console.log("报名已结束！")
+//            }
+//
+//        }
+////        if()
+//        console.log(json_message)
+//
+//    }
 
 
 };
