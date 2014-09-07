@@ -1,5 +1,5 @@
 /**
- * Created by dw on 14-8-29.
+ * Created by dw on 14-8-29.a
  */
 angular.module('partyBid1App')
     .controller('ActiveCtrl', function ($scope, $location) {
@@ -8,56 +8,76 @@ angular.module('partyBid1App')
         }
 
         var activity = JSON.parse(localStorage.getItem("activity"))
-//        var active_name = localStorage.getItem("action_name")
-//        console.log(active_name)
-//        if (activity) {
-//
-//            for (var i = 0; i < activity.length; i++) {
-//
-//
-//                if (activity[i].status == 0 || activity[i].status == 2) {
-//
-//                    $scope.start_end = "开始"
-//
-//
-//                }
-//
-//                else {
-//                    $scope.start_end = "结束"
-//                }
-//
-//
-//            }
-//        }
-//
-//        $scope.action = function () {
-//            if ($scope.start_end == "开始") {
-//                $scope.start_end = "结束"
-//                for (var i = 0; i < activity.length; i++) {
-//                if (activity[i].name == active_name) {
-//                    activity[i].status = 1
-//                    var j=i
-//                    }
-//
-//                }
-//            }
-//            else {
-//
-//                if (confirm("确定要结束本次报名吗？")) {
-//                    activity[j].status = 2
-//                    $location.path("/")
-//                }
-////
-//
-//            }
-//        }
+        var active_name = localStorage.getItem("action_name")
 
-        $scope.exit_action = function () {
-            $location.path('/')
+        $scope.action = function () {
+//            if($scope.use==true){
+            if ($scope.start_end == "开始") {
+                $scope.start_end = "结束"
+                for (var i = 0; i < activity.length; i++) {
+                    if (activity[i].name == active_name) {
+//                        console.log(activity[i].name)
+                        activity[i].status = 1
+
+                        localStorage.setItem('activity', JSON.stringify(activity));
+
+                    }
+
+                }
+            }
+            else {
+                for (var i = 0; i < activity.length; i++) {
+                    if (activity[i].name == active_name) {
+
+                        if (confirm("确定要结束本次报名吗？")) {
+                            activity[i].status = 2
+                            localStorage.setItem('activity', JSON.stringify(activity));
+                            $location.path("/")
+                        }
+//
+
+                    }
+                }
+            }
         }
+            if (activity) {
+                for (var i = 0; i < activity.length; i++) {
+                    console.log(activity[i].status)
+                    if (activity[i].status == 1) {
+                        console.log(activity[i].status)
+                        if (activity[i].name == active_name) {
+                            console.log(active_name)
+                            $scope.start_end = "结束"
 
-        $scope.stay_here = function () {
-            $scope.box_show = false;
-        }
 
-    })
+                        }
+                        else {
+                            $scope.start_end = "开始"
+                            $scope.use = true
+                        }
+                        var unable = true
+                        break
+                    }
+                    else {
+                        unable = false
+                    }
+
+                    if (unable == false) {
+                        $scope.start_end = "开始"
+                        $scope.use = false
+                    }
+
+
+                }
+//
+            }
+
+            $scope.exit_action = function () {
+                $location.path('/')
+            }
+
+            $scope.stay_here = function () {
+                $scope.box_show = false;
+            }
+
+        })

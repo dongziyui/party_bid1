@@ -11,14 +11,16 @@ angular.module('partyBid1App')
         if (!$scope.activities) {
             $location.path('/create')
         }
-//        var activity = JSON.parse(localStorage.getItem("activity"))
+        var activity = JSON.parse(localStorage.getItem("activity"))
         $scope.go_to_action = function (action_name) {
-            console.log(!action_name)
-//            if(!action_name){
 
-//                localStorage.setItem('action_name', action_name)
+//            if (!action_name) {
+
+                localStorage.setItem('action_name', action_name)
 //            }
-//            else {
+//
+//            else
+//            {
 //
 //                for (var i = 0; i < activity.length; i++) {
 //                    var ing
@@ -34,7 +36,6 @@ angular.module('partyBid1App')
 //                    localStorage.setItem('action_name', action_name)
 //                }
 //            }
-
 
             $location.path('/active')
         }
