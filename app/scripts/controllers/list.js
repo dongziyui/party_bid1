@@ -7,6 +7,8 @@ angular.module('partyBid1App')
         $scope.back_to_create = function () {
             $location.path('/create')
         }
+
+        $scope.joins=JSON.parse(localStorage.getItem("join")) || []
         $scope.activities = JSON.parse(localStorage.getItem('activity'))
         if (!$scope.activities) {
             $location.path('/create')
@@ -19,23 +21,7 @@ angular.module('partyBid1App')
                 localStorage.setItem('action_name', action_name)
 //            }
 //
-//            else
-//            {
 //
-//                for (var i = 0; i < activity.length; i++) {
-//                    var ing
-//                    if (activity.status[i] == 1) {
-//                        ing = true
-//                        break
-//                    }
-//                    else {
-//                        ing = false
-//                    }
-//                }
-//                if (ing == false) {
-//                    localStorage.setItem('action_name', action_name)
-//                }
-//            }
 
             $location.path('/active')
         }

@@ -2,79 +2,99 @@
 //
 
 var native_accessor = {
-        send_sms: function (phone, message) {
+    send_sms: function (phone, message) {
 //        native_access.send_sms({"receivers":[{"name":'name', "phone":phone}]}, {"message_content":message});
-            console.log(phone, message);
-        },
+        console.log(phone, message);
+    },
 
-        receive_message: function (json_message) {
-            if (typeof this.process_received_message === 'function') {
-                this.process_received_message(json_message);
-            }
-        },
+    receive_message: function (json_message) {
+        if (typeof this.process_received_message === 'function') {
+            this.process_received_message(json_message);
+        }
+    },
 
-        process_received_message: function (json_message) {
-            var activity = JSON.parse(localStorage.getItem("activity"))
-//
-            for (var j = 0; j < activity.length; j++) {
-                if (activity[j].status == 1) {
-                    console.log("恭喜报名成功！")
-                    json_message.messages[0].message.replace(/\s/g, "")
-                    var i
-                    json_message.messages[0].message.search(/bm|BM/i)
-                    if (i == 0) {
-                        var people_name = json_message.messages[0].message.substr(2)
-                        var phone_number = json_message.messages[0].phone
-                    }
+    process_received_message: function (json_message) {
+        var activity = JSON.parse(localStorage.getItem("activity"))
+        var i = 0
+        var k = activity.length
+        for (var j = 0; j < activity.length; j++) {
+            if (activity[j].status == 1) {
+
+                json_message.messages[0].message.replace(/\s/g, "")
+                if (json_message.messages[0].message.search(/bm|BM/i) == 0) {
+                    var people_name = json_message.messages[0].message.substr(2)
+                    var phone_number = json_message.messages[0].phone
                     var join = JSON.parse(localStorage.getItem("join")) || []
-                    if (!join) {
+
+                    if (!join.length) {
                         join.unshift({
                             name: people_name,
                             phone: phone_number
                         })
+
+                        localStorage.setItem('join', JSON.stringify(join))
+
+                        console.log("恭喜报名成功！")
                     }
-                    else {
-                        for (var j = 0; j < join.length; j++) {
-                            if (((people_name == join[j].name) || (people_name != join[j].name)) && (phone_number != join[j].name))
+                    else{
+                        for (var k = 0; k < join.length; k++) {
+                            
+                            if (people_name == join[k].name) {
+                                if (phone_number != join[k].phone) {
+                                    join.unshift({
+                                        name: people_name,
+                                        phone: phone_number
+                                    })
+
+                                    localStorage.setItem('join', JSON.stringify(join))
+                                    console.log("恭喜报名成功！")
+                                    break
+
+                                }
+                            }
+                            else{
                                 join.unshift({
                                     name: people_name,
                                     phone: phone_number
                                 })
+
+                                localStorage.setItem('join', JSON.stringify(join))
+                                console.log("恭喜报名成功！")
+                                break
+
+                            }
+
+                         }
+                    }
+
+                }
+//                    var sigh=true
+
+                        break
+                    }
+                    if (activity[j].status == 2) {
+                        console.log("报名已结束！")
+                        break
+                    }
+                    if (activity[j].status == 0) {
+                        i++
+                        if (i == k) {
+                            console.log("活动尚未开始！")
                         }
                     }
-                    localStorage.setItem('join', join)
-                    $scope.joins=JSON.parse(localStorage.getItem("join"))
-                    break
                 }
-                else {
-                    if (activity[j].status == 0) {
-                        var commit = true
-                    }
-                    else {
-                        commit = false
-                    }
-                }
-            }
 
-            if (commit == true) {
-                console.log("活动尚未开始！")
-
-            }
-            else {
-                console.log("报名已结束！")
+//
             }
 
 
         }
+        ;
 
-
-    }
-    ;
-
-function notify_message_received(message_json) {
-    //console.log(JSON.stringify(message_json));
-    //JSON.stringify(message_json);
-    //alert(JSON.stringify(message_json.messages));
-    native_accessor.receive_message(message_json);
-    //phone_number=message_json.messages[0].phone;
-}
+        function notify_message_received(message_json) {
+            //console.log(JSON.stringify(message_json));
+            //JSON.stringify(message_json);
+            //alert(JSON.stringify(message_json.messages));
+            native_accessor.receive_message(message_json);
+            //phone_number=message_json.messages[0].phone;
+        }
