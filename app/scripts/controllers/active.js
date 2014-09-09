@@ -6,7 +6,7 @@ angular.module('partyBid1App')
         $scope.go_to_list = function () {
             $location.path('/')
         }
-
+        $scope.joins=JSON.parse(localStorage.getItem("join")) || []
         var activity = JSON.parse(localStorage.getItem("activity"))
         var active_name = localStorage.getItem("action_name")
 

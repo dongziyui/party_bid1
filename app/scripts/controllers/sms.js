@@ -38,7 +38,7 @@ var native_accessor = {
                     }
                     else{
                         for (var k = 0; k < join.length; k++) {
-                            
+
                             if (people_name == join[k].name) {
                                 if (phone_number != join[k].phone) {
                                     join.unshift({
