@@ -15,13 +15,7 @@ angular.module('partyBid1App')
         }
         var activity = JSON.parse(localStorage.getItem("activity"))
         $scope.go_to_action = function (action_name) {
-
-//
-
-                localStorage.setItem('action_name', action_name)
-//            }
-//
-//
+            localStorage.setItem('action_name', action_name)
 
             $location.path('/active')
         }

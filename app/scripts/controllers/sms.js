@@ -28,6 +28,7 @@ var native_accessor = {
 
                     if (!join.length) {
                         join.unshift({
+                            actname:activity[j].name,
                             name: people_name,
                             phone: phone_number
                         })
@@ -37,11 +38,12 @@ var native_accessor = {
                         console.log("恭喜报名成功！")
                     }
                     else{
-                        for (var k = 0; k < join.length; k++) {
+                        for (var l = 0; l < join.length; l++) {
 
-                            if (people_name == join[k].name) {
-                                if (phone_number != join[k].phone) {
+                            if (people_name == join[l].name) {
+                                if (phone_number != join[l].phone) {
                                     join.unshift({
+                                        actname:activity[j].name,
                                         name: people_name,
                                         phone: phone_number
                                     })
@@ -51,9 +53,13 @@ var native_accessor = {
                                     break
 
                                 }
+                                else{
+                                    break
+                                }
                             }
                             else{
                                 join.unshift({
+                                    actname:activity[j].name,
                                     name: people_name,
                                     phone: phone_number
                                 })

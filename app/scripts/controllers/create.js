@@ -36,6 +36,7 @@ angular.module('partyBid1App')
                         name: activity_name,
                         status: 0
                     })
+                    localStorage.setItem('action_name',activity_name )
                     localStorage.setItem('activity', JSON.stringify(activity));
                     $location.path('/active');
                 }
