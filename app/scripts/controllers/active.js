@@ -9,7 +9,7 @@ angular.module('partyBid1App')
         $scope.joins=JSON.parse(localStorage.getItem("join")) || []
         var activity = JSON.parse(localStorage.getItem("activity"))
         var active_name = localStorage.getItem("action_name")
-
+        $scope.member=JSON.parse(localStorage.getItem("join")).length
         $scope.action = function () {
 //            if($scope.use==true){
             if ($scope.start_end == "开始") {
