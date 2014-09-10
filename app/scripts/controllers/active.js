@@ -13,15 +13,14 @@ angular.module('partyBid1App')
         var people = JSON.parse(localStorage.getItem("people")) || []
         if (join.length) {
             for (i = 0; i < join.length; i++) {
-                if (active_name==join[i].actname) {
-
-                    people.unshift(join[i])
-
-//
-                }
+                 if(active_name==join[i].actname) {
+                     people.unshift(join[i])
+                 }
             }
         }
-        $scope.persons=people
+
+        $scope.persons = people
+        $scope.member = people.length
         $scope.action = function () {
 //            if($scope.use==true){
             if ($scope.start_end == "开始") {
