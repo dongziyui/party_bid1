@@ -35,7 +35,7 @@ var native_accessor = {
 
                         localStorage.setItem('join', JSON.stringify(join))
 
-                        console.log("恭喜报名成功！")
+                        native_accessor.send_sms(json_message.messages[0].phone, "恭喜报名成功！");
                     }
                     else{
                         for (var l = 0; l < join.length; l++) {
@@ -49,7 +49,7 @@ var native_accessor = {
                                     })
 
                                     localStorage.setItem('join', JSON.stringify(join))
-                                    console.log("恭喜报名成功！")
+                                    native_accessor.send_sms(json_message.messages[0].phone, "恭喜报名成功！");
                                     break
 
                                 }
@@ -65,7 +65,7 @@ var native_accessor = {
                                 })
 
                                 localStorage.setItem('join', JSON.stringify(join))
-                                console.log("恭喜报名成功！")
+                                native_accessor.send_sms(json_message.messages[0].phone, "恭喜报名成功！");
                                 break
 
                             }
@@ -79,13 +79,13 @@ var native_accessor = {
                         break
                     }
                     if (activity[j].status == 2) {
-                        console.log("报名已结束！")
+                        native_accessor.send_sms(json_message.messages[0].phone, "报名已结束！");
                         break
                     }
                     if (activity[j].status == 0) {
                         i++
                         if (i == k) {
-                            console.log("活动尚未开始！")
+                            native_accessor.send_sms(json_message.messages[0].phone, "活动尚未开始！");
                         }
                     }
                 }
