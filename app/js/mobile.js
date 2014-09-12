@@ -1,3 +1,6 @@
+/**
+ * Created by voctor on 14-6-27.
+ */
 var myModule = angular.module('myApp', ['mobile-navigate']);
 
 myModule.run(function($route, $http, $templateCache) {
@@ -30,12 +33,11 @@ myModule.directive('ngTap', function() {
     };
 });
 
-
 var native_access;
-$(document).ready(function () {
 
+$(document).ready(function (){
     native_access = new NativeAccess();
-
-
-
+    //前提假设
+    if(!localStorage.activitylist)
+        localStorage.activitylist=JSON.stringify([]);
 });
