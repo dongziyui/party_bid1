@@ -25,6 +25,7 @@ angular.module('partyBid1App')
 //            if($scope.use==true){
             if ($scope.start_end == "开始") {
                 $scope.start_end = "结束"
+
                 for (var i = 0; i < activity.length; i++) {
                     if (activity[i].name == active_name) {
 //                        console.log(activity[i].name)
@@ -43,7 +44,7 @@ angular.module('partyBid1App')
                         if (confirm("确定要结束本次报名吗？")) {
                             activity[i].status = 2
                             localStorage.setItem('activity', JSON.stringify(activity));
-                            $location.path("/")
+                            $location.path("/competition")
                         }
 //
 

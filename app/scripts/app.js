@@ -19,7 +19,10 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-
+        .when('/competition',{
+            templateUrl:'views/competition.html',
+            controller:'competitionCtrl'
+        })
       .when('/create', {
             templateUrl: 'views/create.html',
             controller: 'CreateCtrl'
