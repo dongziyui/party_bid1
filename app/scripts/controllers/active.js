@@ -91,5 +91,9 @@ angular.module('partyBid1App')
         $scope.stay_here = function () {
             $scope.box_show = false;
         }
+       $scope.list_show=function(){
+
+       }
+
 
     })

@@ -16,12 +16,12 @@ angular.module('partyBid1App')
         if (bid_list.length) {
             var bid_people = JSON.parse(localStorage.getItem('bid_people'))||[]
             for (var i = 0; i < bid_list.length; i++) {
-                console.log(22222)
+
                 if(list_name==bid_list[i].name) {
                     for(var j=0;j<bid_person.length;j++) {
-                        console.log(3333)
+
                         if (bid_list[i].actname == bid_person[j].actname) {
-                            console.log(bid_person[j])
+
                             bid_people.unshift(bid_person[j])
                         }
                     }
@@ -34,9 +34,14 @@ angular.module('partyBid1App')
         console.log($scope.bid_persons)
 
         $scope.bid_end=function(){
-            var activity = JSON.parse(localStorage.getItem('activity'))
+
             if (confirm("确定要结束本次竞价吗？")) {
-                activity[i].status = 4
+                var activity = JSON.parse(localStorage.getItem('activity'))
+                for(i=0;i<activity.length;i++) {
+                    if(acticity[i].name==list_name) {
+                        activity[i].status = 4
+                    }
+                }
                 localStorage.setItem('activity', JSON.stringify(activity));
                 $location.path("/competition")
             }

@@ -37,6 +37,7 @@ var native_accessor = {
                             native_accessor.send_sms(json_message.messages[0].phone, "恭喜报名成功！");
                         }
                         else {
+                            var k=0
                             for (var l = 0; l < join.length; l++) {
 
                                 if (people_name == join[l].name) {
@@ -49,26 +50,30 @@ var native_accessor = {
 
                                         localStorage.setItem('join', JSON.stringify(join))
                                         native_accessor.send_sms(json_message.messages[0].phone, "恭喜报名成功！");
-                                        break
+                                         break
 
                                     }
-                                    else {
-                                        break
-                                    }
+
                                 }
-                                else {
-                                    join.unshift({
-                                        actname: activity[j].name,
-                                        name: people_name,
-                                        phone: phone_number
-                                    })
+                                else{
+                                    if(phone_number != join[l].phone){
+                                        k++
+                                    }
 
-                                    localStorage.setItem('join', JSON.stringify(join))
-                                    native_accessor.send_sms(json_message.messages[0].phone, "恭喜报名成功！");
+
+                                }
+
+                            }
+                            if(k==join.length){
+                                join.unshift({
+                                    actname: activity[j].name,
+                                    name: people_name,
+                                    phone: phone_number
+                                })
+
+                                localStorage.setItem('join', JSON.stringify(join))
+                                native_accessor.send_sms(json_message.messages[0].phone, "恭喜报名成功！");
                                     break
-
-                                }
-
                             }
                         }
 

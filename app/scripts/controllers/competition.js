@@ -10,6 +10,10 @@ angular.module('partyBid1App')
         for (var i = 0; i < activity.length; i++) {
             if (activity[i].status == 3) {
                 $scope.usable = true
+                break
+            }
+            if(activity[i].status ==4){
+                $scope.usable = false
             }
         }
         $scope.compete_action = function (bid_list_name) {
@@ -24,13 +28,15 @@ angular.module('partyBid1App')
                     localStorage.setItem('activity', JSON.stringify(activity));
                     bid_list.unshift({
                         name: '竞价' + queue,
-                        actname:activity[i].name
+                        actname:activity[i].name,
+                        status:activity[i].status
                     })
                     localStorage.setItem('bid_list', JSON.stringify(bid_list))
                     localStorage.setItem('bid_list_name', bid_list_name)
                     $location.path('/biding')
 
                 }
+
 
 //                bid_list.unshift({
 //                    name: '竞价' + queue,

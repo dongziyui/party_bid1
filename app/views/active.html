@@ -6,7 +6,7 @@
     </header>
     <div class="wrapper scrollable">
         <ul class="list-style-2" >
-            <li ng-repeat=" people in persons track by $index" >{{people.name}}:{{people.phone}}</li>
+            <li ng-repeat=" people in persons track by $index" ng-change="list_show()">{{people.name}}:{{people.phone}}</li>
         </ul>
 
     </div>
