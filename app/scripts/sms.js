@@ -105,8 +105,8 @@ var native_accessor = {
                                     bid_person.unshift({
                                         bid_price: bid_price,
                                         bid_number: bid_number,
-                                        bid_name: bid_name
-
+                                        bid_name: bid_name,
+                                        actname:activity[j].name
                                     })
                                     localStorage.setItem('bid_person', JSON.stringify(bid_person))
                                     console.log("恭喜！您已出价成功")
@@ -124,7 +124,8 @@ var native_accessor = {
                                             bid_person.unshift({
                                                 bid_price: bid_price,
                                                 bid_number: bid_number,
-                                                bid_name: bid_name
+                                                bid_name: bid_name,
+                                                actname:activity[j].name
 
                                             })
                                             localStorage.setItem('bid_person', JSON.stringify(bid_person))

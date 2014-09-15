@@ -12,7 +12,7 @@ angular.module('partyBid1App')
                 $scope.usable = true
             }
         }
-        $scope.compete_action = function () {
+        $scope.compete_action = function (bid_list_name) {
             var bid_list = JSON.parse(localStorage.getItem('bid_list')) || []
             var active_name = localStorage.getItem("action_name")
             var queue = localStorage.getItem('queue') || 0
@@ -24,9 +24,10 @@ angular.module('partyBid1App')
                     localStorage.setItem('activity', JSON.stringify(activity));
                     bid_list.unshift({
                         name: '竞价' + queue,
-                        status:activity[i].status
+                        actname:activity[i].name
                     })
                     localStorage.setItem('bid_list', JSON.stringify(bid_list))
+                    localStorage.setItem('bid_list_name', bid_list_name)
                     $location.path('/biding')
 
                 }
@@ -40,7 +41,8 @@ angular.module('partyBid1App')
             }
         }
         $scope.bid_lists = JSON.parse(localStorage.getItem('bid_list'))
-        $scope.bid_view = function () {
+        $scope.bid_view = function (bid_list_name) {
+            localStorage.setItem('bid_list_name', bid_list_name)
             $location.path('/biding')
         }
     })

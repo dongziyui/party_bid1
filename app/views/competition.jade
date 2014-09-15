@@ -2,10 +2,10 @@ header.header
 
         h4.竞价列表
         button.btn.btn-primary.header-left(ng-click="to_list()")返回
-        button.btn.btn-primary.header-right(ng-click="compete_action()" ng-disabled="usable")开始
+        button.btn.btn-primary.header-right(ng-click="compete_action(bid_list.name)" ng-disabled="usable")开始
 .wrapper.scrollable
        ul.list-style-2
-           li(ng-repeat=" bid_list in bid_lists track by $index" ng-click="bid_view()" ng-class="{'bk_color':bid_list.status===3}") {{bid_list.name}}
+           li(ng-repeat=" bid_list in bid_lists track by $index" ng-click="bid_view(bid_list.name)" ng-class="{'bk_color':bid_list.status===3}") {{bid_list.name}}
 
 footer
     ul.footer-nav.footer-nav-2tabs

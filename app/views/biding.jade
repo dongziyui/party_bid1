@@ -1,7 +1,7 @@
 header.header
-        h4.竞价
+        h4.竞价({{members}}人)
         button.btn.btn-primary.header-left(ng-click="to_compete()")返回
         button.btn.btn-primary.header-right(ng-click="bid_end()")结束
-        .wrapper.scrollable
-               ul.list-style-2
-                   li(ng-repeat=" bid_person in bid_persons track by $index"){{bid_person.name}}:{{bid_person.number}}
+.wrapper.scrollable
+        ul.list-style-2
+         li(ng-repeat=" bid_people in bid_persons track by $index"){{bid_people.bid_name}}:{{bid_people.bid_number}}
