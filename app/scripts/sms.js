@@ -95,7 +95,9 @@ var native_accessor = {
                         var bid_price = json_message.messages[0].message.substr(2)
                         var bid_number = json_message.messages[0].phone
                         var bid_person = JSON.parse(localStorage.getItem("bid_person")) || []
+                        var join = JSON.parse(localStorage.getItem("join"))
                         var h = 0
+
                         for (var l = 0; l < join.length; l++) {
                             if (bid_number == join[l].phone) {
                                 if (!bid_person.length) {
@@ -103,7 +105,7 @@ var native_accessor = {
                                     bid_person.unshift({
                                         bid_price: bid_price,
                                         bid_number: bid_number,
-                                        bid_person: bid_person
+                                        bid_name: bid_name
 
                                     })
                                     localStorage.setItem('bid_person', JSON.stringify(bid_person))
@@ -122,7 +124,7 @@ var native_accessor = {
                                             bid_person.unshift({
                                                 bid_price: bid_price,
                                                 bid_number: bid_number,
-                                                bid_person: bid_person
+                                                bid_name: bid_name
 
                                             })
                                             localStorage.setItem('bid_person', JSON.stringify(bid_person))

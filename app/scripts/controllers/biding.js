@@ -6,7 +6,9 @@ angular.module('partyBid1App')
         $scope.to_compete=function(){
             $location.path('/competition')
         }
+
         $scope.bid_end=function(){
+            var activity = JSON.parse(localStorage.getItem('activity'))
             if (confirm("确定要结束本次竞价吗？")) {
                 activity[i].status = 4
                 localStorage.setItem('activity', JSON.stringify(activity));
