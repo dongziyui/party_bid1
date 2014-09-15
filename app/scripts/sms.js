@@ -3,7 +3,13 @@
 
 var native_accessor = {
     send_sms: function (phone, message) {
+<<<<<<< HEAD
+        native_access.send_sms({"receivers": [
+            {"name": 'name', "phone": phone}
+        ]}, {"message_content": message});
+=======
 //        native_access.send_sms({"receivers":[{"name":'name', "phone":phone}]}, {"message_content":message});
+>>>>>>> 78d490883211396b560ef0cbf95940675f239022
         console.log(phone, message);
     },
 
@@ -12,23 +18,22 @@ var native_accessor = {
             this.process_received_message(json_message);
         }
     },
-
     process_received_message: function (json_message) {
         var activity = JSON.parse(localStorage.getItem("activity"))
         var i = 0
+        var h = 0
         var k = activity.length
+
         for (var j = 0; j < activity.length; j++) {
             if (activity[j].status == 1) {
-
                 json_message.messages[0].message.replace(/\s/g, "")
                 if (json_message.messages[0].message.search(/bm|BM/i) == 0) {
                     var people_name = json_message.messages[0].message.substr(2)
                     var phone_number = json_message.messages[0].phone
                     var join = JSON.parse(localStorage.getItem("join")) || []
-
                     if (!join.length) {
                         join.unshift({
-                            actname:activity[j].name,
+                            actname: activity[j].name,
                             name: people_name,
                             phone: phone_number
                         })
@@ -37,13 +42,13 @@ var native_accessor = {
 
                         native_accessor.send_sms(json_message.messages[0].phone, "恭喜报名成功！");
                     }
-                    else{
+                    else {
                         for (var l = 0; l < join.length; l++) {
 
                             if (people_name == join[l].name) {
                                 if (phone_number != join[l].phone) {
                                     join.unshift({
-                                        actname:activity[j].name,
+                                        actname: activity[j].name,
                                         name: people_name,
                                         phone: phone_number
                                     })
@@ -53,13 +58,13 @@ var native_accessor = {
                                     break
 
                                 }
-                                else{
+                                else {
                                     break
                                 }
                             }
-                            else{
+                            else {
                                 join.unshift({
-                                    actname:activity[j].name,
+                                    actname: activity[j].name,
                                     name: people_name,
                                     phone: phone_number
                                 })
@@ -70,37 +75,82 @@ var native_accessor = {
 
                             }
 
-                         }
+                        }
                     }
 
                 }
 //                    var sigh=true
 
-                        break
-                    }
-                    if (activity[j].status == 2) {
-                        native_accessor.send_sms(json_message.messages[0].phone, "报名已结束！");
-                        break
-                    }
-                    if (activity[j].status == 0) {
-                        i++
-                        if (i == k) {
-                            native_accessor.send_sms(json_message.messages[0].phone, "活动尚未开始！");
+                break
+            }
+            if (activity[j].status == 2) {
+                native_accessor.send_sms(json_message.messages[0].phone, "报名已结束！");
+                break
+            }
+            if (activity[j].status == 0) {
+                i++
+                if (i == k) {
+                    native_accessor.send_sms(json_message.messages[0].phone, "活动尚未开始！");
+                }
+            }
+        }
+        for (var j = 0; j < activity.length; j++) {
+            if (activity[j].status == 3) {
+                json_message.messages[0].message.replace(/\s/g, "")
+                if (json_message.messages[0].message.search(/JJ|jj/i) == 0) {
+                    var bid_price = json_message.messages[0].message.substr(2)
+                    var bid_number = json_message.messages[0].phone
+                    var bid_person = JSON.parse(localStorage.getItem("bid_person")) || []
+                    for (var l = 0; l < join.length; l++) {
+                        if (!bid_person) {
+                            if (bid_number == join[l].phone) {
+                                var bid_name = join[l].name
+                                bid_person.unshift({
+                                    bid_price: bid_price,
+                                    bid_number: bid_number,
+                                    bid_person: bid_person
+
+                                })
+                                localStorage.setItem('bid_person', JSON.stringify(bid_person))
+                                console.log("恭喜！您已出价成功")
+                                native_accessor.send_sms(json_message.messages[0].phone, "恭喜！您已出价成功");
+                            }
+                        }
+                        else {
+                            for (var i = 0; i < bid_person.length; i++) {
+                                if(bid_number==bid_person[i].name){
+                                    console.log("恭喜！您已出价成功")
+                                    native_accessor.send_sms(json_message.messages[0].phone, "恭喜！您已出价成功");
+                                }
+
+                            }
                         }
                     }
+                else
+                    {
+                        h++
+                        if (h == join.length) {
+                            console.log("对不起！您没有报名此活动")
+                            native_accessor.send_sms(json_message.messages[0].phone, "对不起！您没有参加");
+                        }
+
+                    }
                 }
-
-//
             }
-
-
         }
-        ;
 
-        function notify_message_received(message_json) {
-            //console.log(JSON.stringify(message_json));
-            //JSON.stringify(message_json);
-            //alert(JSON.stringify(message_json.messages));
-            native_accessor.receive_message(message_json);
-            //phone_number=message_json.messages[0].phone;
-        }
+    }
+
+
+}
+}
+;
+
+
+function notify_message_received(message_json) {
+    //console.log(JSON.stringify(message_json));
+    //JSON.stringify(message_json);
+    //alert(JSON.stringify(message_json.messages));
+    native_accessor.receive_message(message_json);
+    //phone_number=message_json.messages[0].phone;
+}

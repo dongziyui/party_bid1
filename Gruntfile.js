@@ -13,6 +13,7 @@ module.exports = function (grunt) {
     // Load grunt tasks automatically
     require('load-grunt-tasks')(grunt);
 
+
     // Time how long tasks take. Can help when optimizing build times
     require('time-grunt')(grunt);
 
@@ -25,21 +26,11 @@ module.exports = function (grunt) {
     // Define the configuration for all the tasks
     grunt.initConfig({
 
-        jade: {
-            competition: {
-                src: 'app/views/competition.jade',
-                dest: 'app/views/competition.html'
-            }
-        },
         // Project settings
         yeoman: appConfig,
 
         // Watches files for changes and runs tasks based on the changed files
         watch: {
-            jade: {
-                files: ['<%= yeoman.app %>/views/*'],
-                tasks: ['jade']
-            },
             bower: {
                 files: ['bower.json'],
                 tasks: ['wiredep']
@@ -50,6 +41,10 @@ module.exports = function (grunt) {
                 options: {
                     livereload: '<%= connect.options.livereload %>'
                 }
+            },
+            jade: {
+                files: ['<%= yeoman.app %>/views/*'],
+                tasks: ['jade']
             },
             jsTest: {
                 files: ['test/spec/{,*/}*.js'],
@@ -127,6 +122,7 @@ module.exports = function (grunt) {
                 jshintrc: '.jshintrc',
                 reporter: require('jshint-stylish')
             },
+
             all: {
                 src: [
                     'Gruntfile.js',
@@ -382,6 +378,17 @@ module.exports = function (grunt) {
                 configFile: 'test/karma.conf.js',
                 singleRun: true
             }
+        },
+
+        jade: {
+            competition: {
+                src: './app/views/competition.jade',
+                dest: './app/views/competition.html'
+            },
+            biding: {
+                src: './app/views/biding.jade',
+                dest: './app/views/biding.html'
+            }
         }
     });
 
@@ -395,6 +402,7 @@ module.exports = function (grunt) {
             'clean:server',
             'wiredep',
             'concurrent:server',
+            'jade',
             'autoprefixer',
             'connect:livereload',
             'watch'

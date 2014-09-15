@@ -4,19 +4,6 @@
 angular.module('partyBid1App')
     .controller('ListCtrl', function ($scope, $location) {
         var activity = JSON.parse(localStorage.getItem("activity"))
-
-//        for (var j = 0; j < activity.length; j++) {
-//
-//            if (activity[j].status == 1) {
-//                $scope.bkcolor = true
-//                console.log(activity[j].name)
-//            }
-//            else {
-//                console.log(activity[j].status)
-//                $scope.bkcolor = false
-////            }
-//        }
-
         $scope.back_to_create = function () {
             $location.path('/create')
         }

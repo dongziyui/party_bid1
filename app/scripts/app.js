@@ -19,9 +19,19 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
+<<<<<<< HEAD
+        .when('/biding',{
+            templateUrl:'views/biding.html',
+            controller:'BidingCtrl'
+        })
+        .when('/competition',{
+            templateUrl:'views/competition.html',
+            controller:'CompetitionCtrl'
+=======
         .when('/competition',{
             templateUrl:'views/competition.html',
             controller:'competitionCtrl'
+>>>>>>> 78d490883211396b560ef0cbf95940675f239022
         })
       .when('/create', {
             templateUrl: 'views/create.html',
