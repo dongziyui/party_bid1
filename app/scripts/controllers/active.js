@@ -3,7 +3,24 @@
  */
 angular.module('partyBid1App')
     .controller('ActiveCtrl', function ($scope, $location) {
-        $scope.go_to_list = function () {
+        $scope.refresh = function () {
+            var people = JSON.parse(localStorage.getItem("people")) || [];
+            $scope.peopleList = people;
+            $scope.peopleCount = people.length;
+            console.log(2222222222)
+        }
+        $scope.refresh()
+//            var register = document.getElementById("register");
+//            if (register) {
+//                var scope = angular.element(register).scope();
+//                scope.$apply(function () {
+//                    scope.refresh();
+//                });
+//            }
+
+
+
+                    $scope.go_to_list = function () {
             $location.path('/')
         }
 //        $scope.joins = JSON.parse(localStorage.getItem("join")) || []
@@ -91,9 +108,6 @@ angular.module('partyBid1App')
         $scope.stay_here = function () {
             $scope.box_show = false;
         }
-       $scope.list_show=function(){
-
-       }
 
 
     })

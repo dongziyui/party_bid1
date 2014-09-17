@@ -13,6 +13,16 @@ var native_accessor = {
             }
         },
         process_received_message: function (json_message) {
+            var register = document.getElementById("register");
+            if (register) {
+
+                var scope = angular.element(register).scope();
+                scope.$apply(function () {
+                    scope.refresh();
+                    console.log(111111111)
+                });
+            }
+
             var activity = JSON.parse(localStorage.getItem("activity"))
             var i = 0
 
